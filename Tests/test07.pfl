@@ -1,0 +1,10 @@
+principal
+
+	para(i=0.0; i<4.0; 1.0){
+		para (j = 0.0; j<4.0; 1.0){
+			pintela(i + " , " + j);
+		}
+		pintela("for");
+	}
+
+fin_principal

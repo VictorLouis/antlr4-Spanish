@@ -1,0 +1,27 @@
+funcion colaboreme(){
+
+	devuelve 1.0 + 2.0 + 3.0;	
+}
+
+funcion sumarec(real sum, real sum2){
+	
+	devuelve sum + sum2;
+}
+
+estructura persona{
+	cadena nombre;
+	real edad;
+}
+
+principal
+	
+	estructura persona crear kevin;
+	kevin -> edad = 15.0 + 3.0; 
+	kevin -> nombre = "El Kevin";
+	var = colaboreme();
+	pintela(var);
+	var2 = sumarec(4.0, var);
+	pintela(var2);
+	pintela(kevin.nombre + " es re gala");
+	
+fin_principal

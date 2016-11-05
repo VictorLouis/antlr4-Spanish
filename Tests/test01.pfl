@@ -1,0 +1,15 @@
+principal
+	
+	real a = 54.0;
+	real b = 24.0;
+	real temp = 0;
+	
+	mientras(b != 0.0){
+		temp = b;
+		b = a % b;
+		a = temp;
+	}
+
+	pintela("El maximo comun divisor es: " + a);
+	
+fin_principal

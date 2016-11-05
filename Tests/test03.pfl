@@ -1,0 +1,21 @@
+principal
+
+	pintela("El pequeno teorema de Fermat");
+	real p = 5.0;
+    real a = 2.0;
+    real ans = 0.0;
+      
+    si(a % p == 0.0){
+    	ans = (a ^ p) - a;
+    }
+    
+    ans = (a ^ (p-1.0)) - 1.0;
+       
+    si(ans % p == 0.0){
+    	pintela("P = " + p + " es primo.");
+    }
+    si_no{
+    	pintela("P = " + p + " NO es primo.");
+    }
+
+fin_principal

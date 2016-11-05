@@ -1,0 +1,23 @@
+principal
+	
+	real range = 13.0; 
+	real first = 0.0; 
+	real second = 1.0; 
+	real fibonacci = 0.0;
+    
+    pintela("Serie de Fibonacci hasta " + range + " terminos ");
+    
+    para (real c = 0.0 ; c < range; 1.0){
+          
+          si( c <= 1.0 ){
+          		fibonacci = c;
+          }
+          si_no{
+             	fibonacci = first + second;
+             	first = second;
+             	second = fibonacci;
+          }
+          pintela(fibonacci);
+    }
+   	
+fin_principal

@@ -1,0 +1,17 @@
+principal
+	
+	pintela("Inserte un entero: ");
+	leer(i, entero);
+	pintela(i);
+	
+	pintela("Inserte un real: ");
+	leer(num1, real);
+	pintela("Inserte otro real: ");
+	leer(num2, real);
+	pintela("Inserte una cadena de caracteres: ");
+	leer(algo, cadena);
+	
+	pintela(algo);
+	pintela(num1 + num2);
+
+fin_principal

@@ -1,0 +1,225 @@
+principal
+	
+	pintela("RED NEURONAL");
+    real ent11=1.0;
+    real ent21=1.0;
+    real resul1=0.0;
+    
+    real ent12=1.0;
+    real ent22=0.0;
+    real resul2=1.0;
+    
+    real ent13=0.0;
+    real ent23=1.0;
+    real resul3=1.0;
+    
+    real ent14=0.0;
+    real ent24=0.0;
+    real resul4=0.0;
+    
+    real n1w1=0.7;
+    real n1w2=0.5;
+    real n1u=0.4;
+    real salin1=0.0;
+    
+    real n2w1=0.5;
+    real n2w2=0.7;
+    real n2u=0.4;
+    real salin2=0.0;
+    
+    real n3w1=0.5;
+    real n3w2=0.7;
+    real n3u=0.4;
+    real salin3=0.0;
+    
+    real salida1=0.0;
+    real salida2=0.0;
+    real salida3=0.0;
+    real salida=0.0;
+    
+    real i=0.0;
+    real cont=0.0;
+    real r=0.0;
+    
+    mientras (i<4.0 && cont<9000.0){
+        si(r == 0.0){
+	   		sali1 = ent11*n1w1 + ent21*n1w2 + n1u;
+	   		sali1 = tangenteh(sali1);
+	   		salida1=sali1;
+	   		
+	   		sali2 = ent11*n2w1 + ent21*n2w2 + n2u;
+	   		sali2 = tangenteh(sali2);
+	   		salida2=sali2;
+	   		
+	   	    sali3 = salida1*n3w1 + salida2*n3w2 + n3u;
+	   		sali3 = tangenteh(sali3);
+	   		salida3=sali3;
+	   		
+	   		si (salida3>= 0.5){
+	   		    salida = 1.0;
+	   		}si_no{ 
+	   		    salida = 0.0; 
+	   		}
+	   		
+	   		
+	   		pintela("Entrada "+ent11+" "+ent21+" Ve:"+resul1 +" "+"S:"+salida);
+	   		
+	   		si (salida == resul1){
+	   		    i=i+1.0;
+	   		}si_no{
+	   		    pintela("Valor esperado difiere");
+	   		    n3w1 = n3w1 + salida1*sali3 * (1.0-sali3) * (resul1-sali3);
+	   		    n3w2 = n3w2 + salida2*sali3*(1.0-sali3)*(resul1-sali3);
+	   		    n3u = sali3*(1.0-sali3)*(-(resul1-sali3))*(-1.0);
+	   		    
+	   		    n1w1 = n1w1 + ent11*sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(resul1-sali3);
+	   		    n1w2 = n1w2 + ent21*sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(resul1-sali3);
+	   		    n1u = n1u + sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(-(resul1-sali3)*(-1.0));
+	   		    
+	   		    n2w1 = n2w1 + ent11*sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(resul1-sali3);
+	   		    n2w2 = n2w2 + ent21*sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(resul1-sali3);
+	   		    n2u = n2u + sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(-(resul1-sali3)*(-1.0));	
+	   		    
+	   		    cont = cont+1.0;
+	   		    i = 0.0;   		    
+	   		}
+	   		
+	    }
+	    
+	    si(r == 1.0){
+	   		sali1 = ent12*n1w1 + ent22*n1w2 + n1u;
+	   		sali1 = tangenteh(sali1);
+	   		salida1=sali1;
+	   		
+	   		sali2 = ent12*n2w1 + ent22*n2w2 + n2u;
+	   		sali2 = tangenteh(sali2);
+	   		salida2=sali2;
+	   		
+	   	    sali3 = salida1*n3w1 + salida2*n3w2 + n3u;
+	   		sali3 = tangenteh(sali3);
+	   		salida3=sali3;
+	   		
+	   		si (salida3 >= 0.5){
+	   		    salida = 1.0;
+	   		}si_no{ 
+	   		    salida = 0.0; 
+	   		}
+	   		
+	   		
+	   		pintela("Entrada "+ent12+" "+ent22+" Ve:"+resul2 +" "+"S:"+salida);
+	   		
+	   		si (salida == resul2){
+	   		    i=i+1.0;
+	   		}si_no{
+	   		    pintela("Valor esperado difiere");
+	   		    n3w1 = n3w1 + salida1 * sali3 * (1.0-sali3) * (resul2-sali3);
+	   		    n3w2 = n3w2 + salida2*sali3*(1.0-sali3)*(resul2-sali3);
+	   		    n3u = sali3*(1.0-sali3)*(-(resul2-sali3))*(-1.0);
+	   		    
+	   		    n1w1 = n1w1 + ent12*sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(resul2-sali3);
+	   		    n1w2 = n1w2 + ent22*sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(resul2-sali3);
+	   		    n1u = n1u + sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(-(resul2-sali3)*(-1.0));
+	   		    
+	   		    n2w1 = n2w1 + ent12*sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(resul2-sali3);
+	   		    n2w2 = n2w2 + ent22*sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(resul2-sali3);
+	   		    n2u = n2u + sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(-(resul2-sali3)*(-1.0));	
+	   		    
+	   		    cont = cont+1.0;
+	   		    i = 0.0;   		    
+	   		}
+	   			    
+	    }
+	    
+	    si(r == 2.0){
+	   		sali1 = ent13*n1w1 + ent23*n1w2 + n1u;
+	   		sali1 = tangenteh(sali1);
+	   		salida1=sali1;
+	   		
+	   		sali2 = ent13*n2w1 + ent23*n2w2 + n2u;
+	   		sali2 = tangenteh(sali2);
+	   		salida2=sali2;
+	   		
+	   	    sali3 = salida1*n3w1 + salida2*n3w2 + n3u;
+	   		sali3 = tangenteh(sali3);
+	   		salida3=sali3;
+	   		
+	   		si (salida3>= 0.5){
+	   		    salida = 1.0;
+	   		}si_no{ 
+	   		    salida = 0.0; 
+	   		}
+	   		
+	   		
+	   		pintela("Entrada "+ent13+" "+ent23+" Ve:"+resul3 +" "+"S:"+salida);
+	   		
+	   		si (salida == resul3){
+	   		    i=i+1.0;
+	   		}si_no{
+	   		    pintela("Valor esperado difiere");
+	   		    n3w1 = n3w1 + salida1 * sali3 * (1.0-sali3) * (resul3-sali3);
+	   		    n3w2 = n3w2 + salida2*sali3*(1.0-sali3)*(resul3-sali3);
+	   		    n3u = sali3*(1.0-sali3)*(-(resul3-sali3))*(-1.0);
+	   		    
+	   		    n1w1 = n1w1 + ent13*sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(resul3-sali3);
+	   		    n1w2 = n1w2 + ent23*sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(resul3-sali3);
+	   		    n1u = n1u + sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(-(resul3-sali3)*(-1.0));
+	   		    
+	   		    n2w1 = n2w1 + ent13*sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(resul3-sali3);
+	   		    n2w2 = n2w2 + ent23*sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(resul3-sali3);
+	   		    n2u = n2u + sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(-(resul3-sali3)*(-1.0));	
+	   		    
+	   		    cont = cont+1.0;
+	   		    i = 0.0;   		    
+	   		}
+	   			    
+	    }
+	    
+        si(r == 3.0){
+	   		sali1 = ent14*n1w1 + ent24*n1w2 + n1u;
+	   		sali1 = tangenteh(sali1);
+	   		salida1=sali1;
+	   		
+	   		sali2 = ent14*n2w1 + ent24*n2w2 + n2u;
+	   		sali2 = tangenteh(sali2);
+	   		salida2=sali2;
+	   		
+	   	    sali3 = salida1*n3w1 + salida2*n3w2 + n3u;
+	   		sali3 = tangenteh(sali3);
+	   		salida3=sali3;
+	   		
+	   		si (salida3>= 0.5){
+	   		    salida = 1.0;
+	   		}si_no{ 
+	   		    salida = 0.0; 
+	   		}
+	   		
+	   		
+	   		pintela("Entrada "+ent11+" "+ent24+" Ve:"+resul4 +" "+"S:"+salida);
+	   		
+	   		si (salida == resul4){
+	   		    i=i+1.0;
+	   		}si_no{
+	   		    pintela("Valor esperado difiere");
+	   		    n3w1 = n3w1 + salida1*sali3 * (1.0-sali3) * (resul4-sali3);
+	   		    n3w2 = n3w2 + salida2*sali3*(1.0-sali3)*(resul4-sali3);
+	   		    n3u = sali3*(1.0-sali3)*(-(resul4-sali3))*(-1.0);
+	   		    
+	   		    n1w1 = n1w1 + ent14*sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(resul4-sali3);
+	   		    n1w2 = n1w2 + ent24*sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(resul4-sali3);
+	   		    n1u = n1u + sali1*(1.0-sali1)*n3w1*sali3*(1.0-sali3)*(-(resul4-sali3)*(-1.0));
+	   		    
+	   		    n2w1 = n2w1 + ent14*sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(resul4-sali3);
+	   		    n2w2 = n2w2 + ent24*sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(resul4-sali3);
+	   		    n2u = n2u + sali2*(1.0-sali2)*n3w2*sali3*(1.0-sali3)*(-(resul4-sali3)*(-1.0));	
+	   		    
+	   		    cont = cont+1.0;
+	   		    i = 0.0;   		    
+	   		}
+	   		
+	    }
+        
+        r=i;  
+    }
+    
+    
+fin_principal

@@ -1,0 +1,27 @@
+principal
+
+   real i = 1.0; 
+   real u = 1.0; 
+   real sum = 0.0;
+   
+   mientras(i<=500.0){                                 
+
+	   mientras(u <= 500.0){                               
+		   	si(u<i){
+				si(i%u == 0.0){
+			    	sum = sum + u;
+			    }
+	    	}                         
+	   		u = u + 1.0;
+	   }                           
+
+	   si(sum == i){
+	   		pintela("Un numero perfecto es: " + i);
+	   }
+	
+	   i = i + 1.0;
+	   u = 1.0;  
+	   sum = 0.0;
+   }                             
+   
+fin_principal

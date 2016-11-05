@@ -1,0 +1,27 @@
+principal
+	
+	real num = 20.0;
+	
+    para(real a=0.0;a<=num; 4.0){
+        pintela(a);
+    }
+    
+    real elmax = max(7.0,3.5);
+    pintela("El mayor es " + elmax);
+    
+    real elmin = min(7.0,3.5);
+    pintela("El menor es " + elmin);
+    
+    real eltecho = techo(3.5);
+    pintela("El techo es " + eltecho);
+    
+    real elpiso = piso(3.5);
+	pintela("El piso es " + elpiso);
+	
+	real laraiz = raiz2(16.0);
+	pintela("La raiz es " + laraiz);
+	
+	real elabsoluto = abs(-8.0);
+	pintela("El absoluto es " + elabsoluto);
+	
+fin_principal

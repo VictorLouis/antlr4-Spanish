@@ -1,0 +1,18 @@
+principal
+	
+	real num1 = 2.0;
+	real num2 = 5.0;
+	real num3 = 4.0;
+	
+	si(num1>num2 && num1>num3){
+      	pintela("EL primer numero es el mas grande: " + num1);
+    }
+    sino_si(num2>num1 && num2>num3){
+     	pintela("EL segundo numero es el mas grande: " + num2);
+    }
+    si_no{
+    	pintela("EL tercer numero es el mas grande: " + num3);
+    }
+	
+	
+fin_principal
